@@ -1,0 +1,92 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  border-radius: 12px;
+  background-color: var(--background);
+  padding: 34px 36px 28px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  background: transparent;
+  color: var(--light-text);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-title {
+  margin: 0 0 22px;
+  font-size: 24px;
+  color: var(--primary-color);
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-input {
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  min-height: 48px;
+  padding: 0 14px;
+  font-size: 16px;
+  color: var(--primary-color);
+}
+
+.modal-input:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+}
+
+.modal-submit-button {
+  width: 100%;
+  min-height: 50px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--secondary-color);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.modal-footer-text {
+  margin: 0;
+  font-size: 14px;
+  color: var(--light-text);
+}
+
+.modal-link-button {
+  border: none;
+  background: transparent;
+  color: var(--secondary-color);
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
