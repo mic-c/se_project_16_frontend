@@ -35,7 +35,7 @@ export default function NewsCardList({
   if (!cards.length) {
     return (
       <div className="news-card-list__status">
-        <p className="news-card-list__nothing-found-title">Nothing found</p>
+        <p className="news-card-list__nothing-found-title">Nothing Found</p>
         <p className="news-card-list__nothing-found-text">
           Sorry, but nothing matched your search terms.
         </p>

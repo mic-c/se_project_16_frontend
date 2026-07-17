@@ -13,15 +13,20 @@ export default function SearchBar({ onSearch, isLoading }) {
 
   return (
     <div className="search-bar">
-      <form onSubmit={handleSubmit}>
+      <form className="search-bar__form" onSubmit={handleSubmit}>
         <input
           type="text"
+          className="search-bar__input"
           placeholder="Search for news articles..."
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
           disabled={isLoading}
         />
-        <button type="submit" disabled={isLoading}>
+        <button
+          className="search-bar__button"
+          type="submit"
+          disabled={isLoading}
+        >
           {isLoading ? "Searching..." : "Search"}
         </button>
       </form>

@@ -7,15 +7,15 @@ export default function Footer() {
 
   return (
     <footer className="footer">
-      <div className="footer-container">
-        <p className="footer-copyright">
+      <div className="footer__container">
+        <p className="footer__copyright">
           &copy; {currentYear} News Explorer, Powered by News API
         </p>
-        <nav className="footer-nav">
-          <Link to="/" className="footer-link">
+        <nav className="footer__nav">
+          <Link to="/" className="footer__link">
             Home
           </Link>
-          <Link to="/saved-news" className="footer-link">
+          <Link to="/saved-news" className="footer__link">
             Saved Articles
           </Link>
         </nav>

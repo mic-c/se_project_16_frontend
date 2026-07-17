@@ -1,68 +1,96 @@
 .search-form {
   display: flex;
   align-items: stretch;
-  gap: 12px;
+  gap: 0;
   width: 100%;
-  max-width: 600px;
+  max-width: 608px;
+  background: #fff;
+  border-radius: 100px;
+  overflow: hidden;
 }
 
-.search-form-field {
+.search-form__field {
   flex: 1;
+  position: relative;
 }
 
-.search-form-input {
+.search-form__input {
   width: 100%;
-  min-height: 56px;
-  padding: 0 18px;
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
+  min-height: 64px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 100px;
   font-size: 16px;
-  color: var(--primary-color);
+  line-height: 1.25;
+  color: #1a1b22;
   background-color: var(--background);
 }
 
-.search-form-input::placeholder {
-  color: var(--light-text);
+.search-form__input::placeholder {
+  color: #b6bcbf;
 }
 
-.search-form-input:focus {
+.search-form__input:focus {
   outline: none;
-  border-color: var(--secondary-color);
 }
 
-.search-form-input:disabled {
+.search-form__input:disabled {
   background-color: var(--light-background);
   cursor: not-allowed;
 }
 
-.search-form-button {
-  min-width: 140px;
-  min-height: 56px;
+.search-form__button {
+  min-width: 168px;
+  min-height: 64px;
   border: none;
-  border-radius: 12px;
-  background-color: var(--secondary-color);
+  border-radius: 100px;
+  background-color: #2f71e5;
   color: white;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
 }
 
-.search-form-button:disabled {
+.search-form__button:disabled {
   background-color: #a9bfd8;
   cursor: not-allowed;
 }
 
-.search-form-input_error {
-  border-color: #f00;
+.search-form__input_error {
+  color: #ff4d00;
 }
 
-.search-form-input_error:focus {
-  border-color: #f00;
-}
-
-.search-form-error {
+.search-form__error {
   display: block;
-  margin-top: 6px;
+  position: absolute;
+  left: 24px;
+  bottom: 8px;
   font-size: 13px;
-  color: #f00;
+  color: #ff4d00;
+}
+
+@media (max-width: 768px) {
+  .search-form {
+    flex-direction: column;
+    background: transparent;
+    border-radius: 0;
+    gap: 16px;
+    overflow: visible;
+  }
+
+  .search-form__input {
+    min-height: 56px;
+    border: 1px solid #d1d2d6;
+  }
+
+  .search-form__button {
+    min-height: 56px;
+    width: 100%;
+  }
+
+  .search-form__error {
+    position: static;
+    margin-top: 6px;
+    margin-left: 12px;
+  }
 }

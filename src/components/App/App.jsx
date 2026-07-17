@@ -122,10 +122,10 @@ export default function App() {
               onLoginClick={openLoginModal}
               onLogoutClick={handleLogout}
             />
-            <main className="app-main">
-              <section className="app-search-section">
-                <h2 className="app-title">News Explorer</h2>
-                <p className="app-subtitle">
+            <main className="app__main">
+              <section className="app__hero">
+                <h2 className="app__title">News Explorer</h2>
+                <p className="app__subtitle">
                   Discover news from around the world
                 </p>
                 <SearchForm onSearch={handleSearch} isLoading={isLoading} />

@@ -1,36 +1,72 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Navigation.css";
 
 export default function Navigation({
   isLoggedIn,
   onLoginClick,
   onLogoutClick,
+  isDarkTheme,
+  isMenuOpen,
+  onCloseMenu,
 }) {
+  const handleLoginClick = () => {
+    onCloseMenu();
+    onLoginClick();
+  };
+
+  const handleLogoutClick = () => {
+    onCloseMenu();
+    onLogoutClick();
+  };
+
   return (
-    <nav className="navigation">
-      <ul className="navigation-list">
-        <li className="navigation-item">
-          <Link to="/" className="navigation-link navigation-link_active">
+    <nav
+      className={`navigation${isDarkTheme ? " navigation_theme_dark" : ""}${
+        isMenuOpen ? " navigation_mobile-open" : ""
+      }`}
+    >
+      <ul className="navigation__list">
+        <li className="navigation__item">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `navigation__link${isActive ? " navigation__link_active" : ""}`
+            }
+            onClick={onCloseMenu}
+            end
+          >
             Home
-          </Link>
+          </NavLink>
         </li>
         {isLoggedIn ? (
           <>
-            <li className="navigation-item">
-              <Link to="/saved-news" className="navigation-link">
+            <li className="navigation__item">
+              <NavLink
+                to="/saved-news"
+                className={({ isActive }) =>
+                  `navigation__link${isActive ? " navigation__link_active" : ""}`
+                }
+                onClick={onCloseMenu}
+              >
                 Saved Articles
-              </Link>
+              </NavLink>
             </li>
-            <li className="navigation-item">
-              <button className="navigation-button" onClick={onLogoutClick}>
+            <li className="navigation__item">
+              <button
+                className="navigation__auth-button"
+                onClick={handleLogoutClick}
+              >
                 Logout
               </button>
             </li>
           </>
         ) : (
-          <li className="navigation-item">
-            <button className="navigation-button" onClick={onLoginClick}>
+          <li className="navigation__item">
+            <button
+              className="navigation__auth-button"
+              onClick={handleLoginClick}
+            >
               Login
             </button>
           </li>

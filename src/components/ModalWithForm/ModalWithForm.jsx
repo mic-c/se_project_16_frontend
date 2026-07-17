@@ -36,15 +36,15 @@ export default function ModalWithForm({
   };
 
   return (
-    <div className="modal-overlay" onClick={handleBackdropClick}>
-      <div className="modal-content">
-        <button className="modal-close-button" onClick={onClose}>
+    <div className="modal" onClick={handleBackdropClick}>
+      <div className="modal__content">
+        <button className="modal__close-button" onClick={onClose}>
           ×
         </button>
-        <h2 className="modal-title">{title}</h2>
-        <form className="modal-form" onSubmit={onSubmit}>
+        <h2 className="modal__title">{title}</h2>
+        <form className="modal__form" onSubmit={onSubmit}>
           {children}
-          <button type="submit" className="modal-submit-button">
+          <button type="submit" className="modal__submit-button">
             {submitButtonText}
           </button>
         </form>

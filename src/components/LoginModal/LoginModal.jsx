@@ -25,31 +25,31 @@ export default function LoginModal({
       onSubmit={handleSubmit}
       submitButtonText="Sign in"
     >
-      <div className="modal-input-group">
+      <div className="modal__field">
         <input
           type="email"
-          className="modal-input"
+          className="modal__input"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
       </div>
-      <div className="modal-input-group">
+      <div className="modal__field">
         <input
           type="password"
-          className="modal-input"
+          className="modal__input"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </div>
-      <p className="modal-footer-text">
+      <p className="modal__footer-text">
         Don't have an account?{" "}
         <button
           type="button"
-          className="modal-link-button"
+          className="modal__link-button"
           onClick={onSwitchToSignup}
         >
           Sign up

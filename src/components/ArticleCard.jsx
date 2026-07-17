@@ -8,19 +8,19 @@ export default function ArticleCard({ article }) {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="article-card"
+      className="article-card article-card__link"
     >
       {urlToImage && (
-        <div className="article-image">
-          <img src={urlToImage} alt={title} />
+        <div className="article-card__image-wrapper">
+          <img className="article-card__image" src={urlToImage} alt={title} />
         </div>
       )}
-      <div className="article-content">
-        <h3>{title}</h3>
-        <p>{description}</p>
-        <div className="article-meta">
-          <span className="source">{source?.name}</span>
-          <span className="date">
+      <div className="article-card__content">
+        <h3 className="article-card__title">{title}</h3>
+        <p className="article-card__description">{description}</p>
+        <div className="article-card__meta">
+          <span className="article-card__source">{source?.name}</span>
+          <span className="article-card__date">
             {new Date(publishedAt).toLocaleDateString()}
           </span>
         </div>

@@ -23,20 +23,24 @@ export default function SearchForm({ onSearch, isLoading }) {
 
   return (
     <form className="search-form" onSubmit={handleSubmit}>
-      <div className="search-form-field">
+      <div className="search-form__field">
         <input
           type="text"
-          className={`search-form-input ${
-            inputError ? "search-form-input_error" : ""
+          className={`search-form__input ${
+            inputError ? "search-form__input_error" : ""
           }`}
           placeholder="Search for news"
           value={searchQuery}
           onChange={handleChange}
           disabled={isLoading}
         />
-        {inputError && <span className="search-form-error">{inputError}</span>}
+        {inputError && <span className="search-form__error">{inputError}</span>}
       </div>
-      <button type="submit" className="search-form-button" disabled={isLoading}>
+      <button
+        type="submit"
+        className="search-form__button"
+        disabled={isLoading}
+      >
         {isLoading ? "Searching..." : "Search"}
       </button>
     </form>

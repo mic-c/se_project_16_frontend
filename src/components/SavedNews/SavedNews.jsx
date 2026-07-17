@@ -17,19 +17,19 @@ export default function SavedNews({
         onLoginClick={onLoginClick}
         onLogoutClick={onLogoutClick}
       />
-      <div className="saved-news-banner">
-        <p className="saved-news-label">Saved articles</p>
-        <h2 className="saved-news-title">
+      <div className="saved-news__banner">
+        <p className="saved-news__label">Saved articles</p>
+        <h2 className="saved-news__title">
           {isLoggedIn
             ? `${savedArticles.length} article${savedArticles.length !== 1 ? "s" : ""} saved`
             : "Sign in to view saved articles"}
         </h2>
       </div>
-      <main className="saved-news-main">
+      <main className="saved-news__main">
         {isLoggedIn && savedArticles.length > 0 ? (
-          <ul className="saved-news-list">
+          <ul className="saved-news__list">
             {savedArticles.map((article, index) => (
-              <li key={article.url || index}>
+              <li key={article.url || index} className="saved-news__item">
                 <NewsCard
                   article={article}
                   isSaved={true}
@@ -41,7 +41,7 @@ export default function SavedNews({
           </ul>
         ) : (
           isLoggedIn && (
-            <p className="saved-news-empty">
+            <p className="saved-news__empty">
               You haven't saved any articles yet.
             </p>
           )

@@ -2,30 +2,83 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: var(--light-background);
+  background-color: #f5f6f7;
+  position: relative;
 }
 
-.app-main {
+.app__main {
   flex: 1;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 48px 20px 64px;
+  display: flex;
+  flex-direction: column;
 }
 
-.app-search-section {
-  margin-bottom: 32px;
+.app__hero {
+  width: 100%;
+  min-height: 576px;
+  padding: 160px 104px 80px;
+  background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.4)),
+    url("../../assets/hero.png");
+  background-size: cover;
+  background-position: center;
 }
 
-.app-title {
-  font-size: 48px;
-  line-height: 1.1;
-  margin: 0 0 12px;
-  color: var(--primary-color);
-}
-
-.app-subtitle {
+.app__title {
+  max-width: 608px;
   margin: 0 0 24px;
+  color: #fff;
+  font-family: "Roboto Slab", "Times New Roman", serif;
+  font-size: 60px;
+  line-height: 1.06;
+  font-weight: 400;
+}
+
+.app__subtitle {
+  max-width: 545px;
+  margin: 0 0 64px;
   font-size: 18px;
-  color: var(--light-text);
+  line-height: 1.33;
+  color: #fff;
+}
+
+@media (max-width: 1024px) {
+  .app__hero {
+    min-height: 400px;
+    padding: 120px 40px 48px;
+  }
+
+  .app__title {
+    max-width: 400px;
+    margin-bottom: 16px;
+    font-size: 36px;
+    line-height: 1.1;
+  }
+
+  .app__subtitle {
+    max-width: 452px;
+    margin-bottom: 48px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app__hero {
+    min-height: 536px;
+    padding: 86px 16px 30px;
+  }
+
+  .app__title {
+    max-width: 285px;
+    margin-bottom: 16px;
+    font-size: 36px;
+    line-height: 1.1;
+  }
+
+  .app__subtitle {
+    max-width: 288px;
+    margin-bottom: 122px;
+    font-size: 20px;
+    line-height: 1.2;
+  }
 }

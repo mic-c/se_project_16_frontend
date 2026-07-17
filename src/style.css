@@ -23,6 +23,10 @@ body {
   color: var(--text-color);
 }
 
+body.page_locked {
+  overflow: hidden;
+}
+
 .app {
   min-height: 100vh;
   display: flex;

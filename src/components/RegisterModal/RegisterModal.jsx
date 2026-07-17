@@ -27,41 +27,41 @@ export default function RegisterModal({
       onSubmit={handleSubmit}
       submitButtonText="Sign Up"
     >
-      <div className="modal-input-group">
+      <div className="modal__field">
         <input
           type="text"
-          className="modal-input"
+          className="modal__input"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
         />
       </div>
-      <div className="modal-input-group">
+      <div className="modal__field">
         <input
           type="email"
-          className="modal-input"
+          className="modal__input"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
       </div>
-      <div className="modal-input-group">
+      <div className="modal__field">
         <input
           type="password"
-          className="modal-input"
+          className="modal__input"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </div>
-      <p className="modal-footer-text">
+      <p className="modal__footer-text">
         Already have an account?{" "}
         <button
           type="button"
-          className="modal-link-button"
+          className="modal__link-button"
           onClick={onSwitchToLogin}
         >
           Sign in here

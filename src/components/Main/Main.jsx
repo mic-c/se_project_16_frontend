@@ -17,7 +17,7 @@ export default function Main({
 
   return (
     <section className="main">
-      <div className="main-container">
+      <div className="main__container">
         <NewsCardList
           cards={cards}
           isLoading={isLoading}
