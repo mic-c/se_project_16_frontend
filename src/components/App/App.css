@@ -77,8 +77,8 @@
 
   .app__subtitle {
     max-width: 288px;
-    margin-bottom: 122px;
-    font-size: 20px;
-    line-height: 1.2;
+    margin-bottom: 96px;
+    font-size: 18px;
+    line-height: 1.33;
   }
 }
