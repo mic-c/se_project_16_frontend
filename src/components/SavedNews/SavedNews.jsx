@@ -35,6 +35,7 @@ export default function SavedNews({
                   isSaved={true}
                   isLoggedIn={isLoggedIn}
                   onSaveClick={onRemoveArticle}
+                  isSavedPage={true}
                 />
               </li>
             ))}

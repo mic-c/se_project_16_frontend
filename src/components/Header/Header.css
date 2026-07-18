@@ -33,6 +33,11 @@
   line-height: 1.2;
   text-decoration: none;
   white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.header__logo:hover {
+  opacity: 0.85;
 }
 
 .header__logo_theme_dark {
@@ -49,7 +54,12 @@
 
 @media (max-width: 1024px) {
   .header__container {
+    min-height: 66px;
     padding: 0 40px;
+  }
+
+  .header__logo {
+    font-size: 16px;
   }
 }
 
@@ -119,8 +129,13 @@
   }
 
   .header_theme_dark.header_menu-open {
-    background-color: #fff;
-    border-bottom-color: #d1d2d6;
+      background-color: #1a1b22;
+      border-bottom-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .header_theme_dark.header_menu-open .header__logo,
+    .header_theme_dark.header_menu-open .header__menu-button {
+      color: #fff;
   }
 
   .header_menu-open .header__container {
@@ -138,5 +153,9 @@
     bottom: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .header__menu-button:hover {
+    opacity: 0.8;
   }
 }
