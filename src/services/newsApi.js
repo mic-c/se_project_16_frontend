@@ -1,3 +1,5 @@
+import mockNewsData from "../utils/mockNewsData";
+
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
 
 const newsApiBaseUrl =
@@ -16,7 +18,26 @@ const getDateRange = () => {
   };
 };
 
+const hasValidApiKey = API_KEY && API_KEY !== "your_api_key_here";
+
+const searchMockArticles = (keyword) => {
+  const normalizedKeyword = keyword.trim().toLowerCase();
+
+  if (!normalizedKeyword) {
+    return mockNewsData;
+  }
+
+  return mockNewsData.filter((article) => {
+    const haystack = `${article.title} ${article.description} ${article.source?.name || ""}`.toLowerCase();
+    return haystack.includes(normalizedKeyword);
+  });
+};
+
 export const searchArticles = async (keyword) => {
+  if (!hasValidApiKey) {
+    return searchMockArticles(keyword);
+  }
+
   const { from, to } = getDateRange();
 
   const url = new URL(newsApiBaseUrl);
@@ -29,9 +50,15 @@ export const searchArticles = async (keyword) => {
   const response = await fetch(url);
 
   if (!response.ok) {
-    throw new Error(`API Error: ${response.status}`);
+    return searchMockArticles(keyword);
   }
 
   const data = await response.json();
-  return data.articles || [];
+  const articles = data.articles || [];
+
+  if (!articles.length) {
+    return searchMockArticles(keyword);
+  }
+
+  return articles;
 };

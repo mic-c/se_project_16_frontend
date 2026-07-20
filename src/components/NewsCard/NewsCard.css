@@ -74,7 +74,7 @@
 }
 
 .news-card__bookmark:hover {
-  background-color: #e8e8e8;
+  background-color: #f5f6f7;
 }
 
 /* Inactive: not logged in — grey icon, not clickable visually */
@@ -111,7 +111,7 @@
 }
 
 .news-card__bookmark_active:hover .news-card__bookmark-icon {
-  color: #1d5fd1;
+  color: #2f71e5;
 }
 
 .news-card__bookmark_type_delete:hover .news-card__bookmark-icon {

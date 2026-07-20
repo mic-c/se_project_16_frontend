@@ -53,7 +53,7 @@
 }
 
 .search-form__button:hover:not(:disabled) {
-  background-color: #347eff;
+  background-color: #3483f5;
 }
 
 .search-form__button:disabled {
