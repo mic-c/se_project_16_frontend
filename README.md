@@ -43,6 +43,10 @@ The app is deployed with GitHub Pages.
 
 - Deployed site: https://mic-c.github.io/se_project_16_frontend/
 
+## Pitch Video
+
+- Pitch video: ADD_YOUR_VIDEO_LINK_HERE
+
 To redeploy after changes:
 
 ```bash

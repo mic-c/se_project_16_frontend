@@ -16,15 +16,23 @@
 .app__hero {
   width: 100%;
   min-height: 576px;
-  padding: 160px 104px 80px;
+  padding: 80px 104px 80px;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-image:
     linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.4)),
     url("../../assets/hero.png");
   background-size: cover;
   background-position: center;
+}
+
+.app__hero-content {
+  width: 100%;
+  max-width: 608px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .app__title {
@@ -54,7 +62,7 @@
 @media (max-width: 1024px) {
   .app__hero {
     min-height: 400px;
-    padding: 120px 40px 48px;
+    padding: 66px 40px 48px;
   }
 
   .app__title {
@@ -74,7 +82,7 @@
 @media (max-width: 768px) {
   .app__hero {
     min-height: 536px;
-    padding: 86px 16px 30px;
+    padding: 56px 16px 30px;
   }
 
   .app__title {

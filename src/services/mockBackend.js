@@ -1,103 +1,103 @@
-const TOKEN_STORAGE_KEY = "mock_jwt_token";
-const USER_STORAGE_KEY = "mock_current_user";
-const SAVED_ARTICLES_STORAGE_KEY = "mock_saved_articles";
+const TOKEN_STORAGE_KEY = 'mock_jwt_token'
+const USER_STORAGE_KEY = 'mock_current_user'
+const SAVED_ARTICLES_STORAGE_KEY = 'mock_saved_articles'
 
 const wait = (ms = 400) =>
   new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
+    setTimeout(resolve, ms)
+  })
 
 const readJson = (key, fallback) => {
   try {
-    const value = localStorage.getItem(key);
-    return value ? JSON.parse(value) : fallback;
+    const value = localStorage.getItem(key)
+    return value ? JSON.parse(value) : fallback
   } catch {
-    return fallback;
+    return fallback
   }
-};
+}
 
 const writeJson = (key, value) => {
-  localStorage.setItem(key, JSON.stringify(value));
-};
+  localStorage.setItem(key, JSON.stringify(value))
+}
 
 export const login = async ({ email, password }) => {
-  await wait();
+  await wait()
 
   if (!email || !password) {
-    throw new Error("Email and password are required");
+    throw new Error('Email and password are required')
   }
 
-  const token = `mock-token-${Date.now()}`;
+  const token = `mock-token-${Date.now()}`
   const user = {
     email,
-    name: email.split("@")[0] || "User",
-  };
+    name: email.split('@')[0] || 'User',
+  }
 
-  localStorage.setItem(TOKEN_STORAGE_KEY, token);
-  writeJson(USER_STORAGE_KEY, user);
+  localStorage.setItem(TOKEN_STORAGE_KEY, token)
+  writeJson(USER_STORAGE_KEY, user)
 
-  return { token, user };
-};
+  return { token, user }
+}
 
 export const checkToken = async (token) => {
-  await wait(250);
+  await wait(250)
 
-  const storedToken = localStorage.getItem(TOKEN_STORAGE_KEY);
+  const storedToken = localStorage.getItem(TOKEN_STORAGE_KEY)
   if (!token || !storedToken || token !== storedToken) {
-    throw new Error("Invalid token");
+    throw new Error('Invalid token')
   }
 
-  const user = readJson(USER_STORAGE_KEY, null);
+  const user = readJson(USER_STORAGE_KEY, null)
   if (!user) {
-    throw new Error("User not found");
+    throw new Error('User not found')
   }
 
-  return user;
-};
+  return user
+}
 
 export const logout = async () => {
-  await wait(150);
-  localStorage.removeItem(TOKEN_STORAGE_KEY);
-  localStorage.removeItem(USER_STORAGE_KEY);
-};
+  await wait(150)
+  localStorage.removeItem(TOKEN_STORAGE_KEY)
+  localStorage.removeItem(USER_STORAGE_KEY)
+}
 
 export const getSavedArticles = async () => {
-  await wait(200);
-  return readJson(SAVED_ARTICLES_STORAGE_KEY, []);
-};
+  await wait(200)
+  return readJson(SAVED_ARTICLES_STORAGE_KEY, [])
+}
 
 export const saveArticle = async (article) => {
-  await wait(250);
+  await wait(250)
 
   if (!article || !article.url) {
-    throw new Error("Article is invalid");
+    throw new Error('Article is invalid')
   }
 
-  const savedArticles = readJson(SAVED_ARTICLES_STORAGE_KEY, []);
-  const exists = savedArticles.some((saved) => saved.url === article.url);
+  const savedArticles = readJson(SAVED_ARTICLES_STORAGE_KEY, [])
+  const exists = savedArticles.some((saved) => saved.url === article.url)
 
   if (!exists) {
-    savedArticles.push(article);
-    writeJson(SAVED_ARTICLES_STORAGE_KEY, savedArticles);
+    savedArticles.push(article)
+    writeJson(SAVED_ARTICLES_STORAGE_KEY, savedArticles)
   }
 
-  return savedArticles;
-};
+  return savedArticles
+}
 
 export const deleteArticle = async (article) => {
-  await wait(250);
+  await wait(250)
 
   if (!article || !article.url) {
-    throw new Error("Article is invalid");
+    throw new Error('Article is invalid')
   }
 
-  const savedArticles = readJson(SAVED_ARTICLES_STORAGE_KEY, []);
+  const savedArticles = readJson(SAVED_ARTICLES_STORAGE_KEY, [])
   const nextArticles = savedArticles.filter(
     (saved) => saved.url !== article.url,
-  );
-  writeJson(SAVED_ARTICLES_STORAGE_KEY, nextArticles);
+  )
+  writeJson(SAVED_ARTICLES_STORAGE_KEY, nextArticles)
 
-  return nextArticles;
-};
+  return nextArticles
+}
 
-export const getStoredToken = () => localStorage.getItem(TOKEN_STORAGE_KEY);
+export const getStoredToken = () => localStorage.getItem(TOKEN_STORAGE_KEY)

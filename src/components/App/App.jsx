@@ -131,12 +131,14 @@ export default function App() {
             />
             <main className="app__main">
               <section className="app__hero">
-                <h2 className="app__title">What&apos;s going on in the world?</h2>
-                <p className="app__subtitle">
-                  Find the latest news on any topic and save them in your
-                  personal account.
-                </p>
-                <SearchForm onSearch={handleSearch} isLoading={isLoading} />
+                <div className="app__hero-content">
+                  <h2 className="app__title">What&apos;s going on in the world?</h2>
+                  <p className="app__subtitle">
+                    Find the latest news on any topic and save them in your
+                    personal account.
+                  </p>
+                  <SearchForm onSearch={handleSearch} isLoading={isLoading} />
+                </div>
               </section>
               <Main
                 cards={cards}

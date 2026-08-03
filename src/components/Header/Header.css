@@ -93,34 +93,7 @@
   }
 
   .header__menu-icon {
-    width: 16px;
-    height: 2px;
-    background-color: currentColor;
-    box-shadow:
-      0 5px 0 currentColor,
-      0 -5px 0 currentColor;
-    transition:
-      background-color 0.2s,
-      box-shadow 0.2s,
-      transform 0.2s;
-  }
-
-  .header__menu-button_open .header__menu-icon {
-    height: 0;
-    box-shadow: none;
-    transform: rotate(45deg);
-    position: relative;
-  }
-
-  .header__menu-button_open .header__menu-icon::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -8px;
-    width: 16px;
-    height: 2px;
-    background-color: currentColor;
-    transform: rotate(-90deg);
+    display: block;
   }
 
   .header_menu-open {
@@ -139,7 +112,7 @@
   }
 
   .header_menu-open .header__container {
-    min-height: 286px;
+    min-height: 230px;
     align-items: start;
     grid-template-rows: 56px auto;
     gap: 0;
