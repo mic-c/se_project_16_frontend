@@ -25,6 +25,7 @@ export default function App() {
   const [hasSearched, setHasSearched] = useState(false);
   const [searchError, setSearchError] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUserName, setCurrentUserName] = useState("");
   const [savedArticles, setSavedArticles] = useState([]);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
@@ -37,12 +38,14 @@ export default function App() {
       }
 
       try {
-        await checkToken(token);
+        const user = await checkToken(token);
         const articles = await getSavedArticles();
         setSavedArticles(Array.isArray(articles) ? articles : []);
+        setCurrentUserName(user?.name || "User");
         setIsLoggedIn(true);
       } catch {
         setSavedArticles([]);
+        setCurrentUserName("");
         setIsLoggedIn(false);
       }
     };
@@ -94,13 +97,15 @@ export default function App() {
 
   const handleLoginSubmit = async (credentials) => {
     try {
-      await login(credentials);
+      const authResult = await login(credentials);
       const articles = await getSavedArticles();
 
       setSavedArticles(Array.isArray(articles) ? articles : []);
+      setCurrentUserName(authResult?.user?.name || "User");
       setIsLoggedIn(true);
       closeLoginModal();
     } catch {
+      setCurrentUserName("");
       setIsLoggedIn(false);
     }
   };
@@ -108,6 +113,7 @@ export default function App() {
   const handleLogout = async () => {
     await logout();
     setIsLoggedIn(false);
+    setCurrentUserName("");
     setSavedArticles([]);
   };
 
@@ -119,14 +125,16 @@ export default function App() {
           <div className="app">
             <Header
               isLoggedIn={isLoggedIn}
+              currentUserName={currentUserName}
               onLoginClick={openLoginModal}
               onLogoutClick={handleLogout}
             />
             <main className="app__main">
               <section className="app__hero">
-                <h2 className="app__title">News Explorer</h2>
+                <h2 className="app__title">What&apos;s going on in the world?</h2>
                 <p className="app__subtitle">
-                  Discover news from around the world
+                  Find the latest news on any topic and save them in your
+                  personal account.
                 </p>
                 <SearchForm onSearch={handleSearch} isLoading={isLoading} />
               </section>
@@ -158,6 +166,7 @@ export default function App() {
             savedArticles={savedArticles}
             onRemoveArticle={handleSaveArticle}
             isLoggedIn={isLoggedIn}
+            currentUserName={currentUserName}
             onLoginClick={openLoginModal}
             onLogoutClick={handleLogout}
           />

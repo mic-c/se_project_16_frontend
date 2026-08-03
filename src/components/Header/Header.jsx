@@ -3,7 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import "./Header.css";
 
-export default function Header({ isLoggedIn, onLoginClick, onLogoutClick }) {
+export default function Header({
+  isLoggedIn,
+  currentUserName,
+  onLoginClick,
+  onLogoutClick,
+}) {
   const location = useLocation();
   const isDarkTheme = location.pathname === "/saved-news";
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,7 +46,7 @@ export default function Header({ isLoggedIn, onLoginClick, onLogoutClick }) {
           aria-label="News Explorer home"
           onClick={closeMenu}
         >
-          News Explorer
+          NewsExplorer
         </Link>
         <button
           type="button"
@@ -58,6 +63,7 @@ export default function Header({ isLoggedIn, onLoginClick, onLogoutClick }) {
         </button>
         <Navigation
           isLoggedIn={isLoggedIn}
+          currentUserName={currentUserName}
           onLoginClick={onLoginClick}
           onLogoutClick={onLogoutClick}
           isDarkTheme={isDarkTheme}

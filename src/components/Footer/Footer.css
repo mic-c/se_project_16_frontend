@@ -23,7 +23,7 @@
 .footer__nav {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 24px;
 }
 
 .footer__link {
@@ -35,6 +35,16 @@
 
 .footer__link:hover {
   text-decoration: underline;
+}
+
+.footer__social-link {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.footer__social-link:hover {
+  text-decoration: none;
+  opacity: 0.7;
 }
 
 @media (max-width: 1024px) {
@@ -53,9 +63,10 @@
 
   .footer__nav {
     width: 100%;
+    flex-wrap: wrap;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 20px;
   }
 

@@ -4,6 +4,7 @@ import "./Navigation.css";
 
 export default function Navigation({
   isLoggedIn,
+  currentUserName,
   onLoginClick,
   onLogoutClick,
   isDarkTheme,
@@ -49,15 +50,18 @@ export default function Navigation({
                 }
                 onClick={onCloseMenu}
               >
-                Saved Articles
+                Saved articles
               </NavLink>
             </li>
             <li className="navigation__item">
               <button
-                className="navigation__auth-button"
+                className="navigation__auth-button navigation__auth-button_logged-in"
                 onClick={handleLogoutClick}
               >
-                Logout
+                <span className="navigation__user-name">
+                  {currentUserName || "User"}
+                </span>
+                <span className="navigation__logout-icon" aria-hidden="true" />
               </button>
             </li>
           </>
@@ -67,7 +71,7 @@ export default function Navigation({
               className="navigation__auth-button"
               onClick={handleLoginClick}
             >
-              Login
+              Sign in
             </button>
           </li>
         )}

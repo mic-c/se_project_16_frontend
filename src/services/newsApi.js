@@ -19,18 +19,43 @@ const getDateRange = () => {
 };
 
 const hasValidApiKey = API_KEY && API_KEY !== "your_api_key_here";
+const MIN_FALLBACK_RESULTS = 3;
+
+const ensureMinimumFallbackResults = (articles) => {
+  if (articles.length >= MIN_FALLBACK_RESULTS) {
+    return articles;
+  }
+
+  const seenUrls = new Set(articles.map((article) => article.url));
+  const paddedArticles = [...articles];
+
+  for (const article of mockNewsData) {
+    if (paddedArticles.length >= MIN_FALLBACK_RESULTS) {
+      break;
+    }
+
+    if (!seenUrls.has(article.url)) {
+      paddedArticles.push(article);
+      seenUrls.add(article.url);
+    }
+  }
+
+  return paddedArticles;
+};
 
 const searchMockArticles = (keyword) => {
   const normalizedKeyword = keyword.trim().toLowerCase();
 
   if (!normalizedKeyword) {
-    return mockNewsData;
+    return ensureMinimumFallbackResults(mockNewsData);
   }
 
-  return mockNewsData.filter((article) => {
+  const matchingArticles = mockNewsData.filter((article) => {
     const haystack = `${article.title} ${article.description} ${article.source?.name || ""}`.toLowerCase();
     return haystack.includes(normalizedKeyword);
   });
+
+  return ensureMinimumFallbackResults(matchingArticles);
 };
 
 export const searchArticles = async (keyword) => {

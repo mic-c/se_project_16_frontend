@@ -7,6 +7,7 @@ export default function SavedNews({
   savedArticles,
   onRemoveArticle,
   isLoggedIn,
+  currentUserName,
   onLoginClick,
   onLogoutClick,
 }) {
@@ -14,6 +15,7 @@ export default function SavedNews({
     <div className="saved-news">
       <Header
         isLoggedIn={isLoggedIn}
+        currentUserName={currentUserName}
         onLoginClick={onLoginClick}
         onLogoutClick={onLogoutClick}
       />
@@ -21,7 +23,7 @@ export default function SavedNews({
         <p className="saved-news__label">Saved articles</p>
         <h2 className="saved-news__title">
           {isLoggedIn
-            ? `${savedArticles.length} article${savedArticles.length !== 1 ? "s" : ""} saved`
+            ? `${currentUserName || "User"}, you have ${savedArticles.length} saved article${savedArticles.length !== 1 ? "s" : ""}`
             : "Sign in to view saved articles"}
         </h2>
       </div>
