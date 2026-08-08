@@ -23,8 +23,20 @@
   font-family: "Roboto Slab", "Times New Roman", serif;
   line-height: 1.15;
   color: var(--primary-color);
-  margin: 0;
+  margin: 0 0 30px;
   max-width: 530px;
+}
+
+.saved-news__keywords {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.33;
+  color: #1a1b22;
+  overflow-wrap: anywhere;
+}
+
+.saved-news__keywords-strong {
+  font-weight: 700;
 }
 
 .saved-news__main {
@@ -62,6 +74,7 @@
 
   .saved-news__title {
     font-size: 30px;
+    margin-bottom: 16px;
   }
 
   .saved-news__main {
@@ -80,6 +93,11 @@
 
   .saved-news__title {
     font-size: 30px;
+    max-width: 288px;
+  }
+
+  .saved-news__keywords {
+    font-size: 18px;
   }
 
   .saved-news__main {

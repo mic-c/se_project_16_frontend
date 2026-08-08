@@ -24,6 +24,7 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const [searchError, setSearchError] = useState(false);
+  const [currentKeyword, setCurrentKeyword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUserName, setCurrentUserName] = useState("");
   const [savedArticles, setSavedArticles] = useState([]);
@@ -58,6 +59,7 @@ export default function App() {
       setIsLoading(true);
       setHasSearched(true);
       setSearchError(false);
+      setCurrentKeyword(keyword);
       setCards([]);
       const results = await searchArticles(keyword);
       setCards(Array.isArray(results) ? results : []);
@@ -79,7 +81,10 @@ export default function App() {
       const isAlreadySaved = savedArticles.some((a) => a.url === article.url);
       const nextArticles = isAlreadySaved
         ? await deleteArticle(article)
-        : await saveArticle(article);
+        : await saveArticle({
+            ...article,
+            keyword: article.keyword || currentKeyword,
+          });
 
       setSavedArticles(Array.isArray(nextArticles) ? nextArticles : []);
     } catch {

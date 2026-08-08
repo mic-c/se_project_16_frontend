@@ -65,10 +65,11 @@
 
 @media (max-width: 768px) {
   .header__container {
-    min-height: 56px;
-    padding: 0 16px;
+    min-height: 80px;
+    padding: 24px 16px 16px;
     display: grid;
     grid-template-columns: 1fr auto;
+    align-items: start;
   }
 
   .header__logo {
@@ -114,7 +115,7 @@
   .header_menu-open .header__container {
     min-height: 230px;
     align-items: start;
-    grid-template-rows: 56px auto;
+    grid-template-rows: 80px auto;
     gap: 0;
   }
 

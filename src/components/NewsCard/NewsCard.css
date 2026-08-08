@@ -44,6 +44,24 @@
   gap: 8px;
 }
 
+.news-card__keyword {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  max-width: calc(100% - 88px);
+  padding: 0 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #1a1b22;
+  font-size: 14px;
+  line-height: 1.29;
+  font-weight: 500;
+}
+
 .news-card__tooltip {
   background-color: #fff;
   color: #1a1b22;
@@ -220,5 +238,12 @@
   .news-card__bookmark-wrapper {
     top: 12px;
     right: 12px;
+  }
+
+  .news-card__keyword {
+    top: 12px;
+    left: 12px;
+    max-width: calc(100% - 76px);
+    padding: 0 16px;
   }
 }

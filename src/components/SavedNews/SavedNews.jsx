@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../Header/Header";
 import NewsCard from "../NewsCard/NewsCard";
+import Footer from "../Footer/Footer";
 import "./SavedNews.css";
 
 export default function SavedNews({
@@ -11,6 +12,30 @@ export default function SavedNews({
   onLoginClick,
   onLogoutClick,
 }) {
+  const keywords = [
+    ...new Set(
+      savedArticles
+        .map((article) => article.keyword)
+        .filter((keyword) => typeof keyword === 'string' && keyword.trim()),
+    ),
+  ]
+
+  const keywordsSummary = (() => {
+    if (!keywords.length) {
+      return ''
+    }
+
+    if (keywords.length === 1) {
+      return keywords[0]
+    }
+
+    if (keywords.length === 2) {
+      return `${keywords[0]} and ${keywords[1]}`
+    }
+
+    return `${keywords[0]}, ${keywords[1]}, and ${keywords.length - 2} other`
+  })()
+
   return (
     <div className="saved-news">
       <Header
@@ -26,6 +51,11 @@ export default function SavedNews({
             ? `${currentUserName || "User"}, you have ${savedArticles.length} saved article${savedArticles.length !== 1 ? "s" : ""}`
             : "Sign in to view saved articles"}
         </h2>
+        {isLoggedIn && keywordsSummary && (
+          <p className="saved-news__keywords">
+            By keywords: <span className="saved-news__keywords-strong">{keywordsSummary}</span>
+          </p>
+        )}
       </div>
       <main className="saved-news__main">
         {isLoggedIn && savedArticles.length > 0 ? (
@@ -38,6 +68,7 @@ export default function SavedNews({
                   isLoggedIn={isLoggedIn}
                   onSaveClick={onRemoveArticle}
                   isSavedPage={true}
+                  keyword={article.keyword}
                 />
               </li>
             ))}
@@ -50,6 +81,7 @@ export default function SavedNews({
           )
         )}
       </main>
+      <Footer />
     </div>
   );
 }

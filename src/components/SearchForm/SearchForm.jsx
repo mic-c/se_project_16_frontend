@@ -29,7 +29,7 @@ export default function SearchForm({ onSearch, isLoading }) {
           className={`search-form__input ${
             inputError ? "search-form__input_error" : ""
           }`}
-          placeholder="Search for news"
+          placeholder="Enter topic"
           value={searchQuery}
           onChange={handleChange}
           disabled={isLoading}

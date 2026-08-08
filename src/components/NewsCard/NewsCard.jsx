@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import bookmarkIcon from "../../assets/icons/bookmark.svg";
+import deleteBookmarkIcon from "../../assets/icons/delete-bookmark.svg";
 import "./NewsCard.css";
 
 const formatDate = (dateString) => {
@@ -17,6 +19,7 @@ export default function NewsCard({
   isLoggedIn,
   onSaveClick,
   isSavedPage = false,
+  keyword,
 }) {
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
 
@@ -40,6 +43,7 @@ export default function NewsCard({
   const formattedDate = formatDate(article.publishedAt);
   const articleUrl = article.url || article.link || "";
   const isDeleteAction = isSavedPage;
+  const articleKeyword = keyword || article.keyword || '';
 
   const openArticle = () => {
     if (articleUrl) {
@@ -72,6 +76,9 @@ export default function NewsCard({
         ) : (
           <div className="news-card__image-placeholder" />
         )}
+        {isSavedPage && articleKeyword && (
+          <span className="news-card__keyword">{articleKeyword}</span>
+        )}
         <div className="news-card__bookmark-wrapper">
           {isTooltipVisible && (
             <span className="news-card__tooltip">Sign in to save articles</span>
@@ -95,33 +102,19 @@ export default function NewsCard({
             aria-label={isSaved ? "Remove from saved" : "Save article"}
           >
             {isDeleteAction ? (
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  className="news-card__bookmark-icon"
-                  d="M9 4H15L16 6H20V8H4V6H8L9 4ZM6 9H18L17 20H7L6 9ZM10 11V18H12V11H10ZM12 11V18H14V11H12Z"
-                  fill="currentColor"
-                />
-              </svg>
+              <img
+                className="news-card__bookmark-icon"
+                src={deleteBookmarkIcon}
+                alt=""
+                aria-hidden="true"
+              />
             ) : (
-              <svg
-                width="26"
-                height="26"
-                viewBox="0 0 26 26"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  className="news-card__bookmark-icon"
-                  d="M7 6C7 5.44772 7.44772 5 8 5H18C18.5523 5 19 5.44772 19 6V21L13 17.5L7 21V6Z"
-                  fill="currentColor"
-                />
-              </svg>
+              <img
+                className="news-card__bookmark-icon"
+                src={bookmarkIcon}
+                alt=""
+                aria-hidden="true"
+              />
             )}
           </button>
         </div>

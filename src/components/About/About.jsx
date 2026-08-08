@@ -1,4 +1,5 @@
 import React from "react";
+import authorImage from "../../assets/author.png";
 import "./About.css";
 
 export default function About() {
@@ -6,7 +7,11 @@ export default function About() {
     <section className="about">
       <div className="about__container">
         <div className="about__image-block">
-          <div className="about__author-photo" aria-label="Author photo" />
+          <img
+            className="about__author-photo"
+            src={authorImage}
+            alt="Chukwuka"
+          />
         </div>
         <div className="about__text-block">
           <h2 className="about__title">About the Author</h2>
