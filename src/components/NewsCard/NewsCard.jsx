@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import bookmarkIcon from "../../assets/icons/bookmark.svg";
+import bookmarkOutlineIcon from "../../assets/icons/bookmark-outline.svg";
+import bookmarkActiveIcon from "../../assets/icons/bookmark-active.svg";
 import deleteBookmarkIcon from "../../assets/icons/delete-bookmark.svg";
 import "./NewsCard.css";
 
@@ -108,10 +109,17 @@ export default function NewsCard({
                 alt=""
                 aria-hidden="true"
               />
+            ) : isSaved ? (
+              <img
+                className="news-card__bookmark-icon"
+                src={bookmarkActiveIcon}
+                alt=""
+                aria-hidden="true"
+              />
             ) : (
               <img
                 className="news-card__bookmark-icon"
-                src={bookmarkIcon}
+                src={bookmarkOutlineIcon}
                 alt=""
                 aria-hidden="true"
               />

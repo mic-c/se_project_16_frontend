@@ -7,6 +7,7 @@ import SavedNews from "../SavedNews/SavedNews";
 import About from "../About/About";
 import Footer from "../Footer/Footer";
 import LoginModal from "../LoginModal/LoginModal";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { searchArticles } from "../../services/newsApi";
 import {
   checkToken,
@@ -169,14 +170,16 @@ export default function App() {
       <Route
         path="/saved-news"
         element={
-          <SavedNews
-            savedArticles={savedArticles}
-            onRemoveArticle={handleSaveArticle}
-            isLoggedIn={isLoggedIn}
-            currentUserName={currentUserName}
-            onLoginClick={openLoginModal}
-            onLogoutClick={handleLogout}
-          />
+          <ProtectedRoute isLoggedIn={isLoggedIn}>
+            <SavedNews
+              savedArticles={savedArticles}
+              onRemoveArticle={handleSaveArticle}
+              isLoggedIn={isLoggedIn}
+              currentUserName={currentUserName}
+              onLoginClick={openLoginModal}
+              onLogoutClick={handleLogout}
+            />
+          </ProtectedRoute>
         }
       />
     </Routes>

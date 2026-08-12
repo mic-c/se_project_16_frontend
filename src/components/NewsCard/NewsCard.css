@@ -80,7 +80,7 @@
   height: 40px;
   border-radius: 8px;
   border: none;
-  background-color: #fff;
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,11 +88,11 @@
   padding: 0;
   position: relative;
   z-index: 1;
-  transition: background-color 0.15s;
+  transition: opacity 0.15s;
 }
 
 .news-card__bookmark:hover {
-  background-color: #f5f6f7;
+  opacity: 0.75;
 }
 
 /* Inactive: not logged in — grey icon, not clickable visually */
@@ -101,39 +101,22 @@
 }
 
 .news-card__bookmark_inactive .news-card__bookmark-icon {
-  color: #b6bcbf;
+  opacity: 0.9;
 }
 
-/* Logged in, not saved — dark icon */
-.news-card__bookmark .news-card__bookmark-icon {
-  color: #b6bcbf;
+.news-card__bookmark-icon {
+  display: block;
+  width: 26px;
+  height: 26px;
+}
+
+.news-card__bookmark:not(.news-card__bookmark_inactive) .news-card__bookmark-icon {
+  opacity: 1;
 }
 
 .news-card__bookmark_type_delete .news-card__bookmark-icon {
-  color: #1a1b22;
-}
-
-.news-card__bookmark:not(.news-card__bookmark_inactive):hover
-  .news-card__bookmark-icon {
-  color: #1a1b22;
-}
-
-/* Saved — filled blue */
-.news-card__bookmark_active .news-card__bookmark-icon {
-  color: #2f71e5;
-}
-
-.news-card__bookmark_type_delete.news-card__bookmark_active
-  .news-card__bookmark-icon {
-  color: #1a1b22;
-}
-
-.news-card__bookmark_active:hover .news-card__bookmark-icon {
-  color: #2f71e5;
-}
-
-.news-card__bookmark_type_delete:hover .news-card__bookmark-icon {
-  color: #1a1b22;
+  width: 24px;
+  height: 24px;
 }
 
 /* ── Card content ── */

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import modalCloseIcon from "../../assets/icons/modal-close.svg";
 import "./ModalWithForm.css";
 
 export default function ModalWithForm({
@@ -38,8 +39,8 @@ export default function ModalWithForm({
   return (
     <div className="modal" onClick={handleBackdropClick}>
       <div className="modal__content">
-        <button className="modal__close-button" onClick={onClose}>
-          ×
+        <button type="button" className="modal__close-button" onClick={onClose} aria-label="Close modal">
+          <img className="modal__close-icon" src={modalCloseIcon} alt="" aria-hidden="true" />
         </button>
         <h2 className="modal__title">{title}</h2>
         <form className="modal__form" onSubmit={onSubmit}>
