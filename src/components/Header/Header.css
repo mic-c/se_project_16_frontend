@@ -1,0 +1,135 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.header_theme_dark {
+  position: relative;
+  border-bottom-color: #d1d2d6;
+  background: #fff;
+}
+
+.header__container {
+  max-width: 1232px;
+  margin: 0 auto;
+  padding: 0 104px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.header__logo {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s, opacity 0.2s;
+}
+
+.header__logo:hover {
+  opacity: 0.8;
+}
+
+.header__logo_theme_dark {
+  color: #1a1b22;
+}
+
+.header__menu-button {
+  display: none;
+}
+
+.header__overlay {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .header__container {
+    min-height: 66px;
+    padding: 0 40px;
+  }
+
+  .header__logo {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header__container {
+    min-height: 80px;
+    padding: 24px 16px 16px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+
+  .header__logo {
+    font-size: 16px;
+  }
+
+  .header__menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    color: #fff;
+  }
+
+  .header__menu-button_theme_dark {
+    color: #1a1b22;
+  }
+
+  .header__menu-icon {
+    display: block;
+  }
+
+  .header_menu-open {
+    background-color: #1a1b22;
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .header_theme_dark.header_menu-open {
+      background-color: #1a1b22;
+      border-bottom-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .header_theme_dark.header_menu-open .header__logo,
+    .header_theme_dark.header_menu-open .header__menu-button {
+      color: #fff;
+  }
+
+  .header_menu-open .header__container {
+    min-height: 230px;
+    align-items: start;
+    grid-template-rows: 80px auto;
+    gap: 0;
+  }
+
+  .header__overlay {
+    display: block;
+    position: fixed;
+    top: 56px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .header__menu-button:hover {
+    opacity: 0.6;
+  }
+}

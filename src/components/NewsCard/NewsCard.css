@@ -1,0 +1,232 @@
+.news-card {
+  background-color: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 576px;
+}
+
+.news-card_clickable {
+  cursor: pointer;
+}
+
+/* ── Image area ── */
+.news-card__image-container {
+  position: relative;
+  width: 100%;
+  height: 196px;
+  overflow: hidden;
+  background-color: #e8e8e8;
+}
+
+.news-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.news-card__image-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #e8e8e8;
+}
+
+/* ── Bookmark button ── */
+.news-card__bookmark-wrapper {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.news-card__keyword {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  max-width: calc(100% - 88px);
+  padding: 0 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #1a1b22;
+  font-size: 14px;
+  line-height: 1.29;
+  font-weight: 500;
+}
+
+.news-card__tooltip {
+  background-color: #fff;
+  color: #1a1b22;
+  font-size: 12px;
+  line-height: 1.33;
+  font-weight: 400;
+  padding: 8px 15px;
+  border-radius: 8px;
+  white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+.news-card__bookmark {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.15s;
+}
+
+.news-card__bookmark:hover {
+  opacity: 0.75;
+}
+
+/* Inactive: not logged in — grey icon, not clickable visually */
+.news-card__bookmark_inactive {
+  cursor: default;
+}
+
+.news-card__bookmark_inactive .news-card__bookmark-icon {
+  opacity: 0.9;
+}
+
+.news-card__bookmark-icon {
+  display: block;
+  width: 26px;
+  height: 26px;
+}
+
+.news-card__bookmark:not(.news-card__bookmark_inactive) .news-card__bookmark-icon {
+  opacity: 1;
+}
+
+.news-card__bookmark_type_delete .news-card__bookmark-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* ── Card content ── */
+.news-card__content {
+  padding: 20px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.news-card__date {
+  font-size: 18px;
+  line-height: 1.33;
+  font-weight: 400;
+  color: #b6bcbf;
+  margin: 0 0 12px;
+  min-height: 24px;
+}
+
+.news-card__title {
+  font-family: "Roboto Slab", "Times New Roman", serif;
+  font-size: 22px;
+  line-height: 1.27;
+  font-weight: 400;
+  color: #1a1b22;
+  margin: 0 0 14px;
+  min-height: 84px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-card__description {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #1a1b22;
+  margin: 0 0 auto;
+  padding-bottom: 16px;
+  min-height: 96px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-card__source {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 700;
+  color: #b6bcbf;
+  text-transform: uppercase;
+  letter-spacing: 0.75px;
+  margin: 0;
+  padding-top: 16px;
+  border-top: 1px solid #d3d3d3;
+}
+
+@media (max-width: 1024px) {
+  .news-card {
+    height: 420px;
+  }
+
+  .news-card__image-container {
+    height: 150px;
+  }
+
+  .news-card__content {
+    padding: 16px;
+  }
+
+  .news-card__title {
+    font-size: 22px;
+    line-height: 1.1;
+  }
+
+  .news-card__description {
+    padding-bottom: 12px;
+  }
+
+  .news-card__source {
+    padding-top: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .news-card {
+    height: 440px;
+  }
+
+  .news-card__image-container {
+    height: 196px;
+  }
+
+  .news-card__content {
+    padding: 16px;
+  }
+
+  .news-card__bookmark-wrapper {
+    top: 12px;
+    right: 12px;
+  }
+
+  .news-card__keyword {
+    top: 12px;
+    left: 12px;
+    max-width: calc(100% - 76px);
+    padding: 0 16px;
+  }
+}
